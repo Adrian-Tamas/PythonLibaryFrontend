@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Library Frontend</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+
+        <h1 align="left" class="pl-5 pr-5">Books</h1>
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-success" role="alert"><b>Error</b>: {{ message }}</div>
+        {% endfor %}
+        <div class="container-fluid">
+            <div class="btn-group my-3" role="group" aria-label="User Actions">
+              <button type="button" class="btn btn-secondary">Create</button>
+              <button type="button" class="btn btn-secondary">Edit</button>
+              <button type="button" class="btn btn-secondary">Delete</button>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Book Name</th>
+                  <th scope="col">Book Author</th>
+                </tr>
+              </thead>
+              <tbody>
+              {%for book in all_books %}
+              <tr>
+                  <th scope="row">{{loop.index}}</th>
+                  <td>{{book["name"]}}</td>
+                  <td>{{book["author"]}}</td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </body>
+</html>
