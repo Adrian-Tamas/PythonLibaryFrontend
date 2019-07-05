@@ -6,7 +6,6 @@ app = Flask("LibraryFrontend")
 app.config['SECRET_KEY'] = 'top secret!'
 
 
-# TODO: integrate bootstrap not JS
 @app.route("/", methods=["GET"])
 def index():
     # flash("My error text1")
