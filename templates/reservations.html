@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% set active_page = "reservations" %}
+{% block content %}
+ <div class="container-fluid">
+    <div class="btn-group my-3" role="group" aria-label="User Actions">
+      <button type="button" id="create-reservation" class="btn btn-secondary">Create</button>
+      <button type="button" id="edit-reservation" class="btn btn-secondary" disabled>Edit</button>
+      <button type="button" id="delete-reservation" class="btn btn-secondary" disabled>Delete</button>
+    </div>
+    </div>
+    <div class="container-fluid ">
+        <style>
+             table { table-layout: fixed; }
+             table th, table td { overflow: hidden; }
+        </style>
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col" style="width: 5%">#</th>
+              <th scope="col" style="width: 10%">User First Name</th>
+              <th scope="col" style="width: 10%">User Last Name</th>
+              <th scope="col" style="width: 15%">User Email</th>
+              <th scope="col" style="width: 25%">Book Name</th>
+              <th scope="col" style="width: 15%">Book Author</th>
+              <th scope="col" style="width: 10%">Reservation Date</th>
+              <th scope="col" style="width: 10%">Reservation Expiration Date</th>
+            </tr>
+          </thead>
+          <tbody>
+          {%for reservation in all_reservations %}
+              <tr class="clickable-reservation-row" style="cursor:pointer" id="{{reservation.user.id}}_{{reservation.book.id}}"
+                  data-hidden="true" data-userid="{{reservation.user.id}}" data-bookid="{{reservation.book.id}}">
+                  <th scope="row">{{loop.index}}</th>
+                  <td>{{reservation.user.first_name}}</td>
+                  <td>{{reservation.user.last_name}}</td>
+                  <td style="word-break: break-all">{{reservation.user.email}}</td>
+                  <td>{{reservation.book.name}}</td>
+                  <td>{{reservation.book.author}}</td>
+                  <td>{{reservation.reservation_date}}</td>
+                  <td>{{reservation.reservation_expiration_date}}</td>
+              </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    </div>
+{%endblock%}

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% set active_page = "users" %}
+{% block content %}
+ <div class="container-fluid">
+    <div class="btn-group my-3" role="group" aria-label="User Actions">
+      <button type="button" id="create" class="btn btn-secondary">Create</button>
+      <button type="button" id="edit" class="btn btn-secondary" disabled>Edit</button>
+      <button type="button" id="delete" class="btn btn-secondary" disabled>Delete</button>
+    </div>
+    </div>
+    <div class="container-fluid">
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">User First Name</th>
+              <th scope="col">User Last Name</th>
+              <th scope="col">User Email</th>
+            </tr>
+          </thead>
+          <tbody>
+          {%for user in all_users %}
+              <tr class="clickable-row" style="cursor:pointer" id="{{user.id}}" data-hidden="true" data-id="{{user.id}}">
+                  <th scope="row">{{loop.index}}</th>
+                  <td>{{user.first_name}}</td>
+                  <td>{{user.last_name}}</td>
+                  <td>{{user.email}}</td>
+              </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    </div>
+{%endblock%}
