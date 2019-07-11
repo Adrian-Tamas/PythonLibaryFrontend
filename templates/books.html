@@ -3,7 +3,7 @@
 {% block content %}
  <div class="container-fluid">
     <div class="btn-group my-3" role="group" aria-label="User Actions">
-      <button type="button" id="create" class="btn btn-secondary">Create</button>
+      <a type="button" id="create" href="{{url_for('create_book')}}" class="btn btn-secondary">Create</a>
       <button type="button" id="edit" class="btn btn-secondary" disabled>Edit</button>
       <button type="button" id="delete" class="btn btn-secondary" disabled>Delete</button>
     </div>
