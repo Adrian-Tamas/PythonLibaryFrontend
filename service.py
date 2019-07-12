@@ -38,3 +38,20 @@ def edit_book(book_id, name, author):
         "author": author
     }
     return requests.put(url=f"{backend_url}/books/{book_id}", data=json.dumps(book))
+
+
+def delete_book(book_id):
+    return requests.delete(url=f"{backend_url}/books/{book_id}")
+
+
+def delete_user(user_id):
+    return requests.delete(url=f"{backend_url}/users/{user_id}")
+
+
+def create_user(first_name, last_name, email):
+    user = {
+        "first_name": first_name,
+        "last_name": last_name,
+        "email": email
+    }
+    return requests.post(url=f"{backend_url}/users", data=json.dumps(user))

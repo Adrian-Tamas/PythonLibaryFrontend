@@ -1,6 +1,7 @@
 from flask import Flask, render_template, flash, url_for, redirect, request
 from configuration import backend_url
 from forms.book_form import CreateBookForm, EditBookForm
+from forms.user_form import CreateUserForm
 
 import service
 
@@ -9,6 +10,10 @@ app.config['SECRET_KEY'] = 'c6852762e4fb8297c336fb03ce0b67bd'
 
 
 @app.route("/", methods=["GET"])
+def index():
+    return redirect(url_for("books"))
+
+
 @app.route("/books", methods=["GET"])
 def books():
     # flash("My error text1", "danger")
@@ -59,10 +64,48 @@ def create_book():
     return render_template("create_book.html", title="Create Book", form=form)
 
 
+@app.route("/books/delete/<book_id>", methods=["POST"])
+def delete_book(book_id):
+    response = service.delete_book(book_id=book_id)
+    if response.ok:
+        flash(f"Book with id: {book_id} has been successfully deleted!", "success")
+    else:
+        flash(f"There was a problem deleting the book. Please try again!", "danger")
+    return redirect(url_for("books"))
+
+
 @app.route("/users", methods=["GET"])
 def users():
     all_users = service.get_all_users()
     return render_template("users.html", all_users=all_users, title="Users")
+
+
+@app.route("/users/create", methods=["GET", "POST"])
+def create_user():
+    form = CreateUserForm()
+    if request.method == "POST":
+        if form.validate_on_submit():
+            response = service.create_user(first_name=form.first_name.data,
+                                           last_name=form.last_name.data,
+                                           email=form.email.data)
+            if response.ok:
+                flash(f"User with name {form.first_name.data} {form.last_name.data} was created successfully", "success")
+                return redirect(url_for("users"))
+            else:
+                flash(f"There was an error saving the user because: {response.text}. Please try again!", "danger")
+        else:
+            flash(f"There was an error saving the user. Please fix all issues and try again!", "danger")
+    return render_template("create_user.html", title="Create User", form=form)
+
+
+@app.route("/users/delete/<user_id>", methods=["POST"])
+def delete_user(user_id):
+    response = service.delete_user(user_id=user_id)
+    if response.ok:
+        flash(f"User with id: {user_id} has been successfully deleted!", "success")
+    else:
+        flash(f"There was a problem deleting the user because {response.text}. Please try again!", "danger")
+    return redirect(url_for("users"))
 
 
 @app.route("/reservations", methods=["GET"])

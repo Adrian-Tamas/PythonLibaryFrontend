@@ -1,3 +1,4 @@
+{% from "delete_modal.html" import show_delete_modal%}
 <html>
     <head>
         <title>Library Frontend - {{title}}</title>
@@ -11,6 +12,7 @@
     <body>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src='{{url_for("static", filename="main.js")}}'></script>
+        <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
         <h1 align="left" class="pl-5 pr-5">{{title}}</h1>
           {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -21,6 +23,7 @@
               {% endfor %}
             {% endif %}
           {% endwith %}
+        {{show_delete_modal()}}
         <div class="row my-3 mx-3">
           <div class="col-1">
             <div class="nav flex-column nav-pills my-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
