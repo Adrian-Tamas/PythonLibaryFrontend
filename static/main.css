@@ -1,0 +1,15 @@
+table {
+    table-layout: fixed;
+}
+
+table th, table td {
+    overflow: hidden;
+}
+
+.clickable-reservation-row {
+    cursor:pointer;
+}
+
+.clickable-row {
+    cursor:pointer;
+}

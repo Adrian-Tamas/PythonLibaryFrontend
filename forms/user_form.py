@@ -13,3 +13,14 @@ class CreateUserForm(FlaskForm):
                                                                      message="Emails do not match")])
 
     save = SubmitField("Create User")
+
+
+class EditUserForm(FlaskForm):
+
+    id = StringField("User Id")
+    first_name = StringField("First Name", validators=[DataRequired(), Length(min=2)])
+    last_name = StringField("Last Name", validators=[DataRequired(), Length(min=2)])
+
+    email = StringField("Email")
+
+    save = SubmitField("Edit User")

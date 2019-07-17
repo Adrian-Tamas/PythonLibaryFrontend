@@ -1,13 +1,14 @@
-{% from "delete_modal.html" import show_delete_modal%}
 <html>
     <head>
         <title>Library Frontend - {{title}}</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" type="image/png" href="{{url_for('static', filename='favicon.ico')}}">
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
     </head>
     <body>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -23,7 +24,6 @@
               {% endfor %}
             {% endif %}
           {% endwith %}
-        {{show_delete_modal()}}
         <div class="row my-3 mx-3">
           <div class="col-1">
             <div class="nav flex-column nav-pills my-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">

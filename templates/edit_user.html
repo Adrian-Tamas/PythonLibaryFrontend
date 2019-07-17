@@ -6,6 +6,10 @@
         {{form.hidden_tag()}}
         <fieldset class="form-group">
             <div class="form-group">
+                {{form.id.label(class="form-control-label")}}
+                {{form.id(class="form-control", readonly=true)}}
+            </div>
+            <div class="form-group">
                 {{form.first_name.label(class="form-control-label")}}
                 {% if form.first_name.errors %}
                     {{form.first_name(class="form-control is-invalid")}}
@@ -33,29 +37,7 @@
             </div>
             <div class="form-group">
                 {{form.email.label(class="form-control-label")}}
-                {% if form.email.errors %}
-                    {{form.email(class="form-control is-invalid")}}
-                    {% for error in form.email.errors %}
-                        <span class="invalid-feedback">
-                            {{error}}
-                        </span>
-                    {% endfor %}
-                {% else %}
-                    {{form.email(class="form-control")}}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{form.confirm_email.label(class="form-control-label")}}
-                {% if form.confirm_email.errors %}
-                    {{form.confirm_email(class="form-control is-invalid")}}
-                    {% for error in form.confirm_email.errors %}
-                        <span class="invalid-feedback">
-                            {{error}}
-                        </span>
-                    {% endfor %}
-                {% else %}
-                    {{form.confirm_email(class="form-control")}}
-                {% endif %}
+                {{form.email(class="form-control", readonly=true)}}
             </div>
         </fieldset>
         <div class="form-group">
