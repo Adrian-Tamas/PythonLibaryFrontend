@@ -1,0 +1,28 @@
+{% macro user_details_modal() -%}
+<div class="modal fade" id="viewUserDetailsModal" tabindex="-1" role="dialog" aria-labelledby="viewUserDetailsModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="itemLabel">User Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <div class="media">
+                  <img src="" class="mr-3" alt="Image" id="preview">
+                  <div class="media-body">
+                      <h3 class="mt-0" id="user_name">User Name</h3>
+                      <span id="user_email">
+                          Placeholder for Email
+                      </span>
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link" id="viewUserCancelButton" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endmacro %}

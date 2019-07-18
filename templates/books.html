@@ -1,10 +1,12 @@
 {% extends "layout.html" %}
 {% set active_page = "books" %}
 {% from "delete_modal.html" import show_delete_modal%}
+{% from "view_book_modal.html" import book_details_modal %}
 {% block content %}
 <div class="container-fluid">
     <div class="row">
         <div class="btn-group my-3 col-8" role="group" aria-label="User Actions">
+            <button type="button" id="viewDetails" class="btn btn-secondary" disabled data-toggle="modal" data-target="#viewBookDetails"> View Details</button>
             <a id="create" href="{{url_for('create_book')}}" class="btn btn-secondary">Create</a>
             <button type="button" id="edit" class="btn btn-secondary" disabled>Edit</button>
             <button type="button" id="delete" class="btn btn-secondary" disabled data-toggle="modal" data-target="#deleteModal" data-page="Book">Delete</button>
@@ -25,7 +27,7 @@
         </thead>
         <tbody>
         {%for book in all_books %}
-        <tr class="clickable-row" id="{{book.id}}" data-hidden="true" data-id="{{book.id}}">
+        <tr class="clickable-row" id="{{book.id}}" data-hidden="true" data-book="{{book}}"  data-id="{{book.id}}">
             <th scope="row">{{loop.index}}</th>
             <td>{{book.name}}</td>
             <td>{{book.author}}</td>
@@ -35,4 +37,5 @@
     </table>
 </div>
 {{show_delete_modal()}}
+{{book_details_modal()}}
 {%endblock content%}

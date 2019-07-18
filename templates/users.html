@@ -1,10 +1,14 @@
 {% extends "layout.html" %}
 {% from "delete_modal.html" import show_delete_modal%}
+{% from "view_user_modal.html" import user_details_modal %}
 {% set active_page = "users" %}
 {% block content %}
 <div class="container-fluid">
     <div class="row">
         <div class="btn-group my-3 col-8" role="group" aria-label="User Actions">
+            <button type="button" id="viewUserDetails" class="btn btn-secondary" disabled data-toggle="modal"
+                    data-target="#viewUserDetailsModal">View Details
+            </button>
             <a href="{{url_for('create_user')}}" id="create" class="btn btn-secondary">Create</a>
             <button type="button" id="edit" class="btn btn-secondary" disabled>Edit</button>
             <button type="button" id="delete" class="btn btn-secondary" disabled data-toggle="modal"
@@ -28,7 +32,7 @@
         </thead>
         <tbody>
         {%for user in all_users %}
-        <tr class="clickable-row" id="{{user.id}}" data-hidden="true" data-id="{{user.id}}">
+        <tr class="clickable-row" id="{{user.id}}" data-hidden="true" data-user="{{user}}"   data-id="{{user.id}}">
             <th scope="row">{{loop.index}}</th>
             <td>{{user.first_name}}</td>
             <td>{{user.last_name}}</td>
@@ -39,4 +43,5 @@
     </table>
 </div>
 {{show_delete_modal()}}
+{{user_details_modal()}}
 {%endblock%}
