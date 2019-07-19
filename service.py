@@ -20,10 +20,12 @@ def get_all_reservations():
     return response.json()
 
 
-def create_book(name, author):
+def create_book(name, author, description=None, cover=None):
     book = {
         "name": name,
-        "author": author
+        "author": author,
+        "description": description,
+        "cover": cover
     }
     return requests.post(url=f"{backend_url}/books", data=json.dumps(book))
 
@@ -32,10 +34,12 @@ def get_book(book_id):
     return requests.get(url=f"{backend_url}/books/{book_id}")
 
 
-def edit_book(book_id, name, author):
+def edit_book(book_id, name, author, description=None, cover=None):
     book = {
         "name": name,
-        "author": author
+        "author": author,
+        "description": description,
+        "cover": cover
     }
     return requests.put(url=f"{backend_url}/books/{book_id}", data=json.dumps(book))
 

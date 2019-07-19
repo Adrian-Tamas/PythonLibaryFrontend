@@ -42,7 +42,11 @@ def edit_book(book_id):
     form = EditBookForm()
     if request.method == "POST":
         if form.validate_on_submit():
-            response = service.edit_book(book_id=form.id.data, name=form.name.data, author=form.author.data)
+            response = service.edit_book(book_id=form.id.data,
+                                         name=form.name.data,
+                                         author=form.author.data,
+                                         description=form.description.data,
+                                         cover=form.cover.data)
             if response.ok:
                 flash(f"Book '{form.name.data}' was successfully saved", "success")
                 return redirect(url_for("books"))
@@ -54,6 +58,8 @@ def edit_book(book_id):
         form.id.data = book["id"]
         form.name.data = book["name"]
         form.author.data = book["author"]
+        form.description.data = book.get("description")
+        form.cover.data = book.get("cover")
     return render_template("edit_book.html", title="Edit Book", form=form, book=book)
 
 
@@ -62,7 +68,10 @@ def create_book():
     form = CreateBookForm()
     if request.method == "POST":
         if form.validate_on_submit():
-            response = service.create_book(name=form.name.data, author=form.author.data)
+            response = service.create_book(name=form.name.data,
+                                           author=form.author.data,
+                                           description=form.description.data,
+                                           cover=form.cover.data)
             if response.ok:
                 flash(f"Book '{form.name.data}' was successfully saved", "success")
                 return redirect(url_for("books"))

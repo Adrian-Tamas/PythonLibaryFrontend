@@ -152,7 +152,9 @@ jQuery(document).ready(function($) {
       var description = (typeof book.description === "undefined") ? "No description provided": book.description
       console.log(book.cover)
       if (book.cover !== null) {
-        $('#preview').attr("src", book.cover);
+          $('#preview').attr("src", book.cover);
+      } else {
+          $('#preview').attr("src", "/static/no_cover.gif");
       }
       $('#book_description').text(description);
     });
