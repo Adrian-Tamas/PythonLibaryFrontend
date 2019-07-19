@@ -1,5 +1,6 @@
 {% macro book_details_modal() -%}
-<div class="modal fade" id="viewBookDetails" tabindex="-1" role="dialog" aria-labelledby="viewBookDetails" aria-hidden="true">
+<div class="modal fade" id="viewBookDetails" tabindex="-1" role="dialog" aria-labelledby="viewBookDetails"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,18 +11,20 @@
             </div>
             <div class="modal-body" id="modal-body">
                 <div class="media">
-                  <img src="{{url_for('static', filename='no_cover.gif')}}" class="mr-3" alt="Image" id="preview">
-                  <div class="media-body">
-                      <h3 class="mt-0" id="book_name">Book Name</h3>
-                      <h5 class="mt-0" id="book_author"> Authors:</h5>
-                      <span id="book_description">
+                    <img src="{{url_for('static', filename='no_cover.gif')}}" class="mr-3" alt="Image" id="preview"
+                         height="300" width="200">
+                    <div class="media-body">
+                        <h3 class="mt-0" id="book_name">Book Name</h3>
+                        <h5 class="mt-0" id="book_author"> Authors:</h5>
+                        <span id="book_description">
                           Placeholder for a short description
                       </span>
-                  </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-link" id="viewBookCancelButton" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-link" id="viewBookCancelButton" data-dismiss="modal">Cancel
+                </button>
             </div>
         </div>
     </div>

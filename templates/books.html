@@ -27,7 +27,7 @@
         </thead>
         <tbody>
         {%for book in all_books %}
-        <tr class="clickable-row" id="{{book.id}}" data-hidden="true" data-book="{{book}}"  data-id="{{book.id}}">
+        <tr class="clickable-row" id="{{book.id}}" data-hidden="true" data-book='{{book|to_json}}'  data-id="{{book.id}}">
             <th scope="row">{{loop.index}}</th>
             <td>{{book.name}}</td>
             <td>{{book.author}}</td>

@@ -1,4 +1,5 @@
 import datetime
+import json
 
 from flask import Flask, render_template, flash, url_for, redirect, request
 from configuration import backend_url
@@ -10,6 +11,11 @@ import service
 
 app = Flask("LibraryFrontend")
 app.config['SECRET_KEY'] = 'c6852762e4fb8297c336fb03ce0b67bd'
+
+
+@app.template_filter("to_json")
+def to_json(dictionary):
+    return json.dumps(dictionary)
 
 
 @app.route("/", methods=["GET"])

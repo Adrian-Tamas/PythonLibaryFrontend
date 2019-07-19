@@ -144,13 +144,15 @@ jQuery(document).ready(function($) {
     // View book details modal
     $(document).on('show.bs.modal', '#viewBookDetails', function (event) {
       var button = $(event.relatedTarget);// Button that triggered the modal
-      var book = JSON.parse(button.data('book').replace(/'/g, '"')); // turn dict into json
+//      var book = JSON.parse(button.data('book').replace(/'/g, '"')); // turn dict into json
+      var book = button.data('book')
       var modal = $(this);
       $('#book_name').text(book.name);
       $('#book_author').text(book.author);
       var description = (typeof book.description === "undefined") ? "No description provided": book.description
-      if (typeof book.preview_link !== "undefined") {
-        $('#preview').attr("src", book.preview_link);
+      console.log(book.cover)
+      if (book.cover !== null) {
+        $('#preview').attr("src", book.cover);
       }
       $('#book_description').text(description);
     });
@@ -158,7 +160,8 @@ jQuery(document).ready(function($) {
     // View user details modal
     $(document).on('show.bs.modal', '#viewUserDetailsModal', function (event) {
       var button = $(event.relatedTarget);// Button that triggered the modal
-      var user = JSON.parse(button.data('user').replace(/'/g, '"')); // turn dict into json
+//      var user = JSON.parse(button.data('user').replace(/'/g, '"')); // turn dict into json
+      var user = button.data('user')
       var modal = $(this);
       var user_name = `${user.first_name} ${user.last_name}`
       $('#user_name').text(user_name);
