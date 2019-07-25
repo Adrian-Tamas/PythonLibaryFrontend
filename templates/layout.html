@@ -28,12 +28,12 @@
           <div class="col-1">
             <div class="nav flex-column nav-pills my-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 {% set navigation_bar =[
-                    ("/books", "books", "Books"),
-                    ("/users", "users", "Users"),
-                    ("/reservations", "reservations", "Reservations")] -%}
-                {% set active_page = active_page|default ('books') -%}
-                {% for href, id, caption in navigation_bar %}
-                    <a class="nav-link {% if id == active_page %} active {% endif %}" id="v-pills-{{id}}" href="{{url_for(id)}}" role="tab">{{caption}}</a>
+                    ("/books", "books", "books.get_all_books", "Books"),
+                    ("/users", "users", "users.get_all_users", "Users"),
+                    ("/reservations", "reservations", "reservations.get_all_reservations", "Reservations")] -%}
+                {% set active_page = active_page -%}
+                {% for href, id, route, caption in navigation_bar %}
+                    <a class="nav-link {% if id == active_page %} active {% endif %}" id="v-pills-{{id}}" href="{{url_for(route)}}" role="tab">{{caption}}</a>
                 {% endfor %}
             </div>
           </div>

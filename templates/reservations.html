@@ -5,7 +5,7 @@
      <div class="container-fluid">
         <div class="row">
             <div class="btn-group my-3 col-8" role="group" aria-label="User Actions">
-              <a id="create-reservation" href="{{url_for('create_reservation')}}" class="btn btn-secondary">Create</a>
+              <a id="create-reservation" href="{{url_for('reservations.create_reservation')}}" class="btn btn-secondary">Create</a>
               <button type="button" id="edit-reservation" class="btn btn-secondary" disabled>Edit</button>
               <button type="button" id="delete-reservation" class="btn btn-secondary" disabled data-toggle="modal" data-target="#deleteReservationModal" data-page="Reservation">Delete</button>
             </div>
