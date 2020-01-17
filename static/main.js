@@ -148,8 +148,12 @@ jQuery(document).ready(function($) {
       var modal = $(this);
       $('#book_name').text(book.name);
       $('#book_author').text(book.author);
-      var description = book.description === null ? "No description provided": book.description
-      if (book.cover !== null) {
+      if (book.description === null || book.description == "") {
+        var description = "No description provided"
+      } else {
+        var description = book.description
+      }
+      if (book.cover !== null && book.cover !== "") {
           $('#preview').attr("src", book.cover);
       } else {
           $('#preview').attr("src", "/static/no_cover.gif");
