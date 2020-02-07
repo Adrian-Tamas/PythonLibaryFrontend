@@ -14,7 +14,7 @@
                 {% if form.first_name.errors %}
                     {{form.first_name(class="form-control is-invalid")}}
                     {% for error in form.first_name.errors %}
-                        <span class="invalid-feedback">
+                        <span class="invalid-feedback" id="first_name_error">
                             {{error}}
                         </span>
                     {% endfor %}
@@ -27,7 +27,7 @@
                 {% if form.last_name.errors %}
                     {{form.last_name(class="form-control is-invalid")}}
                     {% for error in form.last_name.errors %}
-                        <span class="invalid-feedback">
+                        <span class="invalid-feedback" id="last_name_error">
                             {{error}}
                         </span>
                     {% endfor %}

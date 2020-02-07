@@ -22,7 +22,7 @@
                 {% if form.reservation_expiration_date.errors %}
                     {{form.reservation_expiration_date(class='datepicker form-control is-invalid', id='reservation_expiration_date')}}
                     {% for error in form.reservation_expiration_date.errors %}
-                        <span class="invalid-feedback">
+                        <span class="invalid-feedback" id="reservation_expiration_date_error">
                             {{error}}
                         </span>
                     {% endfor %}
