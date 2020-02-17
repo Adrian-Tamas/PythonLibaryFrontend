@@ -18,13 +18,10 @@ def get_all_reservations():
 @reservations.route("/reservations/create", methods=["GET", "POST"])
 def create_reservation():
     all_users = service.get_all_users()
-    all_books = service.get_all_books()
+    all_existing_books = service.get_all_books()
     all_reservations = service.get_all_reservations()
-    for book in all_books:
-        for reservation in all_reservations[:]:
-            if book == reservation["book"]:
-                all_books.remove(book)
-                break
+    all_books = [book for book in all_existing_books
+                 if book not in [reservation["book"] for reservation in all_reservations]]
 
     book_names = [(book["id"], book["name"]) for book in all_books]
     user_names = [(user["id"], f"{user['first_name']} {user['last_name']}") for user in all_users]
